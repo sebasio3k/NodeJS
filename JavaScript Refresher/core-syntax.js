@@ -134,11 +134,47 @@ const printName = ({ name, greet }) => {
 
 // Must match prop names:
 const { name, age } = person;
-console.log('name, edad:', name, edad)
+console.log("name, edad:", name, edad);
 
 // u can use the id u want 'cause it's rulled by position:
 const [first, second] = hobbies;
-console.log('first, second:', first, second)
+console.log("first, second:", first, second);
 
 // console.log("printName(person", printName(person));
 console.log(printName(person));
+
+// Async Code & Promises
+console.log("\nAsync Code & Promises ----------------------------------");
+
+// const fetchData = (callback) => {
+const fetchData = () => {
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      //   callback("Done!");
+      resolve("Done!");
+    }, 1500);
+  });
+  return promise;
+};
+
+// 2 seconds = 2000ms
+setTimeout(() => {
+  console.log("Time is done!");
+  //   fetchData((text) => {
+  //     console.log(text);
+  fetchData()
+    .then((text) => {
+      console.log(text);
+      return fetchData();
+    })
+    .then((text2) => {
+      console.log(text2);
+    });
+}, 1000);
+
+// setTimeout(() => {
+//   console.log("Time is done!");
+// }, 1000);
+
+console.log("Hello!");
+console.log("Hi!");
